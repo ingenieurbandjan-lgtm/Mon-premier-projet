@@ -16,34 +16,30 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function downloadPDF() {
-    // Masquer le bouton avant impression
+    const element = document.querySelector(".cv");
+    const opt = {
+        margin: 0,
+        filename: 'CV-Bandjan-Kourouma.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { format: 'a4', orientation: 'portrait' }
+    };
+    
+    // Masquer le bouton avant génération
     const downloadBtn = document.querySelector(".download");
     if (downloadBtn) {
         downloadBtn.style.display = "none";
     }
 
-    // Ajouter des styles d'impression temporaires
-    const style = document.createElement('style');
-    style.textContent = `
-        @media print {
-            body { margin: 0 !important; padding: 0 !important; background: white !important; }
-            html { margin: 0 !important; padding: 0 !important; }
-        }
-    `;
-    document.head.appendChild(style);
-
-    // Attendre un bit pour que le DOM se mette à jour
-    setTimeout(() => {
-        window.print();
-        
-        // Restaurer le bouton après impression/annulation
+    // Générer et télécharger le PDF
+    html2pdf().set(opt).from(element).save().then(() => {
+        // Afficher le bouton après génération
         setTimeout(() => {
             if (downloadBtn) {
                 downloadBtn.style.display = "flex";
             }
-            document.head.removeChild(style);
         }, 500);
-    }, 100);
+    });
 }
 
 // Gérer les événements d'impression

@@ -23,13 +23,13 @@ body {
 
 .cv {
     width: 210mm;
-    height: 297mm;
+    min-height: 297mm;
     margin: auto;
     background: #ffffff;
     display: grid;
     grid-template-columns: 320px 1fr;
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
-    overflow: hidden;
+    overflow: visible;
     page-break-after: avoid;
 }
 
@@ -506,14 +506,28 @@ body {
 =========================== */
 
 @media (max-width: 900px) {
+    body{
+        padding: 0;
+    }
     .cv {
         grid-template-columns: 1fr;
         width: 100%;
+        height: auto;
+        min-height: auto;
+        display: grid;
+        overflow: visible;
+        box-shadow: none;
+    }
+    .left{
+        text-align: center;
+        padding: 25px;
     }
 
-    .left {
-        text-align: center;
-    }
+    /* .left
+    .right {
+        width: 100%;
+        padding: 20% 
+    } */
 
     .photo img {
         width: 140px;
@@ -522,6 +536,8 @@ body {
 
     .right {
         padding: 24px;
+        max-height: none;
+        overflow: visible;
     }
 
     .qualities {
