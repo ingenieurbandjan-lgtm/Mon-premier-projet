@@ -1,0 +1,530 @@
+/* ===========================
+   CV PREMIUM - BANDJAN KOUROUMA
+   Optimisé pour écran et impression PDF
+=========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f3f6fb;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.cv {
+    width: 210mm;
+    height: 297mm;
+    margin: auto;
+    background: #ffffff;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
+    overflow: hidden;
+    page-break-after: avoid;
+}
+
+.left {
+    background: linear-gradient(180deg, #0f2d5c 0%, #154a83 100%);
+    color: #ffffff;
+    padding: 30px 26px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    page-break-inside: avoid;
+}
+
+.photo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.9);
+    object-fit: cover;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+    display: block;
+}
+
+@supports (-webkit-appearance: none) {
+    .photo img {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+.left h1 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.title {
+    text-align: center;
+    margin-top: 8px;
+    color: #dce9f8;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.section {
+    margin-top: 24px;
+}
+
+.section h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    letter-spacing: 0.5px;
+}
+
+.section p,
+.section li {
+    margin: 8px 0;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.section ul {
+    padding-left: 16px;
+}
+
+.bar {
+    width: 100%;
+    height: 7px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.bar span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #4fc3f7 0%, #1f4e79 100%);
+    border-radius: 999px;
+}
+
+.right {
+    padding: 34px 36px;
+    background: #fcfdff;
+    overflow-y: auto;
+    max-height: 297mm;
+    page-break-inside: avoid;
+}
+
+.right section {
+    margin-bottom: 18px;
+    page-break-inside: avoid;
+}
+
+.right h2 {
+    color: #0f2d5c;
+    font-size: 18px;
+    margin-bottom: 10px;
+    position: relative;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.right h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 60px;
+    height: 2px;
+    background: #1f4e79;
+}
+
+.right p {
+    font-size: 14px;
+    line-height: 24px;
+    color: #535a64;
+}
+
+.item {
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border-left: 4px solid #1f4e79;
+    background: linear-gradient(90deg, #f8fbff 0%, #f2f6fb 100%);
+    border-radius: 8px;
+}
+
+.item h3 {
+    color: #0f2d5c;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.item span {
+    color: #6f7782;
+    font-size: 13px;
+}
+
+.right ul {
+    padding-left: 18px;
+}
+
+.right ul li {
+    margin: 7px 0;
+    color: #535a64;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.qualities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.qualities span {
+    background: #f1f5f9;
+    color: #0f2d5c;
+    border: 1px solid #dbe4ee;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.download {
+    margin-top: 18px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.download-btn {
+    border: none;
+    background: #0f2d5c;
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    background: #0a1f3f;
+    box-shadow: 0 6px 16px rgba(15, 45, 92, 0.3);
+}
+
+.download-btn:active {
+    transform: scale(0.98);
+}
+
+/* ===========================
+   MEDIA QUERY POUR IMPRESSION PDF
+=========================== */
+@media print {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    html, body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+    }
+
+    body {
+        padding: 0 !important;
+        background-color: white !important;
+    }
+
+    .cv {
+        width: 210mm !important;
+        height: 297mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        display: grid !important;
+        grid-template-columns: 320px 1fr !important;
+        page-break-after: avoid !important;
+        background: white !important;
+    }
+
+    .left {
+        background: linear-gradient(180deg, #0f2d5c 0%, #154a83 100%) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        page-break-inside: avoid !important;
+    }
+
+    .left h1, .left h2, .left p, .left li {
+        color: white !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .right {
+        padding: 34px 36px !important;
+        background: white !important;
+        overflow: visible !important;
+        max-height: none !important;
+        page-break-inside: avoid !important;
+    }
+
+    .right h2 {
+        color: #0f2d5c !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .right h2::after {
+        background: #1f4e79 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .right p {
+        color: #535a64 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .bar {
+        background: rgba(255, 255, 255, 0.18) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .bar span {
+        background: linear-gradient(90deg, #4fc3f7 0%, #1f4e79 100%) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .item {
+        background: linear-gradient(90deg, #f8fbff 0%, #f2f6fb 100%) !important;
+        border-left: 4px solid #1f4e79 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        page-break-inside: avoid !important;
+    }
+
+    .item h3 {
+        color: #0f2d5c !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .item span {
+        color: #6f7782 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .qualities span {
+        background: #f1f5f9 !important;
+        color: #0f2d5c !important;
+        border: 1px solid #dbe4ee !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        page-break-inside: avoid !important;
+    }
+
+    section, .item, .qualities, .bar {
+        page-break-inside: avoid !important;
+    }
+
+    .download {
+        display: none !important;
+    }
+
+    .photo img {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Désactiver le fond du navigateur */
+    @page {
+        background: white;
+        margin: 0;
+        size: A4;
+    }
+}
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 18px rgba(15, 45, 92, 0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.download-btn:hover {
+    background: #154a83;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(15, 45, 92, 0.22);
+}
+
+.download-btn i {
+    font-size: 14px;
+}
+
+.section p i {
+    width: 20px;
+    color: #4fc3f7;
+}
+
+/* ===========================
+      IMPRESSION A4
+=========================== */
+
+@page {
+    size: A4;
+    margin: 4mm;
+}
+
+@media print {
+    body {
+        background: #ffffff;
+        padding: 0;
+    }
+
+    .cv {
+        width: 100%;
+        min-height: auto;
+        max-height: none;
+        margin: 0;
+        box-shadow: none;
+        border: none;
+        grid-template-columns: 320px 1fr;
+    }
+
+    .left,
+    .right {
+        padding: 12px 14px;
+    }
+
+    .left h1 {
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 4px;
+    }
+
+    .title {
+        margin-top: 8px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .section {
+        margin-top: 12px;
+    }
+
+    .section h2 {
+        font-size: 13px;
+        margin-bottom: 6px;
+        padding-bottom: 3px;
+    }
+
+    .section p,
+    .section li,
+    .right p,
+    .right ul li,
+    .item h3,
+    .item span {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .bar {
+        height: 6px;
+        background: #d9d9d9;
+        border: 1px solid #bcbcbc;
+        border-radius: 999px;
+        overflow: hidden;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .bar span {
+        display: block;
+        height: 100%;
+        background: #1f4e79;
+        border-radius: 999px;
+        min-height: 6px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .qualities span {
+        padding: 6px 10px;
+        font-size: 10px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .right section {
+        margin-bottom: 10px;
+    }
+
+    .right h2 {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    .download {
+        display: none !important;
+    }
+
+    .cv * {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+}
+
+/* ===========================
+     RESPONSIVE
+=========================== */
+
+@media (max-width: 900px) {
+    .cv {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .left {
+        text-align: center;
+    }
+
+    .photo img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .right {
+        padding: 24px;
+    }
+
+    .qualities {
+        justify-content: center;
+    }
+}
